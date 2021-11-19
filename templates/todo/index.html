@@ -1,0 +1,30 @@
+{% extends 'todo/base.html' %}
+
+{% block title %}
+    <title>TO-DO List</title>
+{% endblock %}
+
+{% block body %}
+    <h1>TO-DO LIST</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Add tasks" aria-label="Add tasks" aria-describedby="button-addon2">
+            <button class="btn	btn-primary" type="submit">ADD</button>
+        </div>
+    </form>
+    {{ form }}
+
+    {% for task in tasks %}
+        {% if task.completed %}
+        <div class="row completed" >
+        ...
+        </div>
+        {% else %}
+        <div class="row not-completed" >
+        ....
+        </div>
+        {% endif %}
+    {% endfor %}
+
+{% endblock %}
